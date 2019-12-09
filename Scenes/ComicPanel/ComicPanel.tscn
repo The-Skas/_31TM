@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/ComicPanel/ComicPanel.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/ComicPanel/ComicFrame.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resource/font/pixel_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/ComicPanel/Panel_Dark.gd" type="Script" id=4]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+DIST_TO_CAM_ALPHA = 200.0
+Panel_Left = null
+Panel_Right = null
+is_active_panel = false
+
+[node name="Panel" type="Panel" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -190.0
+margin_top = -182.0
+margin_right = 193.0
+margin_bottom = 203.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="ComicFrame" parent="Panel" index="0" instance=ExtResource( 2 )]
+
+margin_left = 12.0
+margin_top = 13.0
+margin_right = 370.0
+margin_bottom = 191.0
+
+[node name="Location" type="RichTextLabel" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -177.0
+margin_right = 30.0
+margin_bottom = -157.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Test"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Panel_Dark" type="Panel" parent="." index="2"]
+
+modulate = Color( 1, 1, 1, 0.78 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -190.0
+margin_top = -182.0
+margin_right = 193.0
+margin_bottom = 203.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+hint_tooltip = "Dark Panel for Hiding based on distance."
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 4 )
+_sections_unfolded = [ "Hint", "Rect", "Visibility" ]
+
+

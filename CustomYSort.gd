@@ -8,6 +8,7 @@ func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	set_process(true)
+	get_child(0).global_position = self.global_position
 
 
 func _process(delta):
@@ -17,6 +18,6 @@ func _process(delta):
 		if(comicp.dist_to_camera > _closest_child_dist):
 			_closest_child_dist = comicp.dist_to_camera 
 			move_child(comicp, 0)
-			print("Moving Child, ", comicp)
+			#print("Moving Child, ", comicp)
 	
 	pass
