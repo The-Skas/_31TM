@@ -74,22 +74,24 @@ _sections_unfolded = [ "Material", "Visibility" ]
 [node name="Left" type="Node2D" parent="." index="2"]
 
 position = Vector2( 130, 277 )
+scale = Vector2( 0.75, 0.75 )
 script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Frontdoor" parent="Left" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -7.39996, 3.60001 )
-scale = Vector2( 0.75, 0.75 )
 
 [node name="Right" type="Node2D" parent="." index="3"]
 
 position = Vector2( 879, 270 )
+scale = Vector2( 0.75, 0.75 )
 script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="LivingArea" parent="Right" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( 17.9, -99.4 )
-scale = Vector2( 0.815625, 0.75 )
 Panel_Right = NodePath("../Kitchen")
 
 [node name="Active" type="Node2D" parent="." index="4"]
