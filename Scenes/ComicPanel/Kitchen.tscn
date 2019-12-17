@@ -5,7 +5,6 @@
 
 [node name="Kitchen" index="0" instance=ExtResource( 1 )]
 
-Panel_Left = NodePath("Null")
 is_active_panel = true
 
 [node name="RichTextLabel" parent="Panel/ComicFrame" index="0"]

@@ -1,13 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Resource/Images/magnifyglass.png" type="Texture" id=2]
-[ext_resource path="res://Left.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/ComicPanel/FrontDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Right.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/ComicPanel/LivingArea.tscn" type="PackedScene" id=6]
-[ext_resource path="res://CustomYSort.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/ComicPanel/Kitchen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/ComicPanel/FrontDoor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/ComicPanel/LivingArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/ComicPanel/Kitchen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Positions.gd" type="Script" id=5]
 
 [node name="Root" type="Node" index="0"]
 
@@ -31,17 +28,45 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.09375, 0.09375, 0.09375, 1 )
 
-[node name="LineEdit" type="LineEdit" parent="." index="1"]
+[node name="Time" type="HSlider" parent="." index="1"]
 
-editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 394.0
+margin_top = 519.0
+margin_right = 631.0
+margin_bottom = 535.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 1.0
+max_value = 10.0
+step = 1.0
+page = 5.0
+value = 1.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="Searc" type="LineEdit" parent="." index="2"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 783.0
-margin_top = 25.0
+margin_top = 24.0
 margin_right = 1008.0
-margin_bottom = 57.0
+margin_bottom = 56.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -57,55 +82,57 @@ caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
 
-[node name="Sprite" type="Sprite" parent="LineEdit" index="2"]
-
-editor/display_folded = true
-position = Vector2( -667, -62 )
-
-[node name="magnifyglass" type="Sprite" parent="LineEdit/Sprite" index="0"]
-
-modulate = Color( 0.933594, 0.0652512, 0.0652512, 1 )
-self_modulate = Color( 0.984375, 0.984375, 0.984375, 1 )
-position = Vector2( 871.487, 76.675 )
-scale = Vector2( 0.0469238, 0.0417969 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Material", "Visibility" ]
-
-[node name="Left" type="Node2D" parent="." index="2"]
+[node name="ComicFrames" type="Node2D" parent="." index="3"]
 
 position = Vector2( 130, 277 )
-scale = Vector2( 0.75, 0.75 )
-script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Frontdoor" parent="Left" index="0" instance=ExtResource( 4 )]
+[node name="Backdoor" parent="ComicFrames" index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 1436.6, -184.4 )
+Panel_Left = "LivingArea"
+Panel_Right = ""
+
+[node name="LivingArea" parent="ComicFrames" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 1016.57, -108.733 )
+Panel_Left = "Kitchen"
+Panel_Right = "Backdoor"
+
+[node name="Kitchen" parent="ComicFrames" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 546.667, -12 )
+Panel_Left = "Frontdoor"
+Panel_Right = "LivingArea"
+
+[node name="Frontdoor" parent="ComicFrames" index="3" instance=ExtResource( 2 )]
 
 position = Vector2( -7.39996, 3.60001 )
+Panel_Left = "Null"
+Panel_Right = "Kitchen"
 
-[node name="Right" type="Node2D" parent="." index="3"]
+[node name="Left" type="Node2D" parent="." index="4"]
 
-position = Vector2( 879, 270 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 130, 277 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
+start_scale = Vector2( 0.75, 0.75 )
 
-[node name="LivingArea" parent="Right" index="0" instance=ExtResource( 6 )]
+[node name="Right" type="Node2D" parent="." index="5"]
 
-position = Vector2( 17.9, -99.4 )
-Panel_Right = NodePath("../Kitchen")
+position = Vector2( 879, 270 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+start_scale = Vector2( 0.75, 0.75 )
 
-[node name="Active" type="Node2D" parent="." index="4"]
+[node name="Active" type="Node2D" parent="." index="6"]
 
 position = Vector2( 518, 275 )
-script = ExtResource( 7 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Sort", "Transform" ]
+start_scale = Vector2( 1, 1 )
 
-[node name="Kitchen" parent="Active" index="0" instance=ExtResource( 8 )]
-
-position = Vector2( 22, -7 )
-Panel_Right = NodePath("../Living Area")
-
-[node name="Camera2D" type="Camera2D" parent="." index="5"]
+[node name="Camera2D" type="Camera2D" parent="." index="7"]
 
 position = Vector2( 512, 308 )
 anchor_mode = 1
@@ -131,5 +158,16 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Smoothing", "Transform" ]
+
+[node name="Animate" type="Tween" parent="." index="8"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[connection signal="value_changed" from="Time" to="." method="_on_Time_value_changed"]
 
 
